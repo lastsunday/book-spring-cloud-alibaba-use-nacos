@@ -1,0 +1,27 @@
+server:
+  port: 7832
+spring:
+  application:
+    name: use-nacos
+  jackson:
+    default-property-inclusion: non_null
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: f0f2ef4d-ef19-481d-ab05-501dc330e78f
+        register:
+          group-name: use-nacos
+          service-name: use-nacos
+        auto-register: true
+dubbo:
+  application:
+    name: use-nacos
+    parameters:
+      namespace: f0f2ef4d-ef19-481d-ab05-501dc330e78f
+      group: use-nacos
+  registry:
+    address: nacos://127.0.0.1:8848
+  protocol:
+    name: dubbo
+    port: 20880
